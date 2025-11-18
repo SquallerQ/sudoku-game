@@ -14,9 +14,9 @@ a {
 
 @font-face {
   font-family: 'Playwrite';
-  src: url('fonts/Playwrite-degrund.woff2') format("woff2"),
-       url('fonts/Playwrite-degrund.woff') format('woff'),
-       url('fonts/Playwrite-degrund.ttf') format('ttf');
+  src: url('assets/fonts/Playwrite-degrund.woff2') format("woff2"),
+       url('assets/fonts/Playwrite-degrund.woff') format('woff'),
+       url('assets/fonts/Playwrite-degrund.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -31,6 +31,9 @@ body {
 
 main {
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
@@ -40,7 +43,6 @@ main {
 }
 
 .game__container {
-  margin-top: 80px;
   display: flex;
   justify-content: center;
   column-gap: 50px;

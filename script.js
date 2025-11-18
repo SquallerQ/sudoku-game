@@ -26,11 +26,15 @@ const movesOnPage = document.querySelector('.game__menu-move span');
 const inputSound = document.getElementById('inputSound');
 const winSound = document.getElementById('winSound');
 
-function renderGrid () {
-  swapRows(basicMatrix);
-  swapRows(basicMatrix);
-  swapRows(basicMatrix);
-  const startGrid = []
+function renderGrid() {
+  swapRowsInBlock(basicMatrix, 0);
+  swapRowsInBlock(basicMatrix, 1);
+  swapRowsInBlock(basicMatrix, 2);
+  swapColumnsInBlock(basicMatrix, 0);
+  swapColumnsInBlock(basicMatrix, 1);
+  swapColumnsInBlock(basicMatrix, 2);
+
+  const startGrid = [];
   for (let i = 1; i < sudokuRows.length + 1; i++) {
     let row = document.querySelector(`.game__inner-row-${i}`);
     let boxInRow = row.querySelectorAll(".game__inner-box");
@@ -263,11 +267,34 @@ newGameButton.addEventListener("click", function () {
   renderGrid();
 });
 
-function swapRows(grid) {
-  const row1 = Math.floor(Math.random() * 9);
-  let row2;
-  do {
-    row2 = Math.floor(Math.random() * 9); 
-  } while (row1 === row2);
+function swapRowsInBlock(grid, blockIndex) {
+  const startRow = blockIndex * 3;
+
+  const offset1 = Math.floor(Math.random() * 3);
+  let offset2 = Math.floor(Math.random() * 3);
+  while (offset1 === offset2) {
+    offset2 = Math.floor(Math.random() * 3);
+  }
+
+  const row1 = startRow + offset1;
+  const row2 = startRow + offset2;
+
   [grid[row1], grid[row2]] = [grid[row2], grid[row1]];
+}
+
+function swapColumnsInBlock(grid, blockIndex) {
+  const startCol = blockIndex * 3;
+
+  const offset1 = Math.floor(Math.random() * 3);
+  let offset2 = Math.floor(Math.random() * 3);
+  while (offset1 === offset2) {
+    offset2 = Math.floor(Math.random() * 3);
+  }
+
+  const col1 = startCol + offset1;
+  const col2 = startCol + offset2;
+
+  for (let row = 0; row < 9; row++) {
+    [grid[row][col1], grid[row][col2]] = [grid[row][col2], grid[row][col1]];
+  }
 }
