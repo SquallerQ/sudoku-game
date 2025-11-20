@@ -35,6 +35,9 @@ const gameEndMoveCountSpan = document.querySelector(
 );
 const gameEndInner = document.querySelector(".game__inner");
 const newGameButton = document.querySelector(".game__option-new");
+const scoreModal = document.querySelector(".game__score");
+const scoreToggleBtn = document.querySelector(".game__score-toggle");
+const scoreCloseBtn = document.querySelector(".game__score-close");
 
 function swapRowsInBlock(grid, blockIndex) {
   const startRow = blockIndex * 3;
@@ -291,3 +294,21 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 renderGrid();
+
+scoreToggleBtn.addEventListener("click", function () {
+  scoreModal.classList.add("game__score--open");
+});
+
+scoreCloseBtn.addEventListener("click", function () {
+  scoreModal.classList.remove("game__score--open");
+});
+
+document.addEventListener("click", function (event) {
+  if (
+    scoreModal.classList.contains("game__score--open") &&
+    !scoreModal.contains(event.target) &&
+    !scoreToggleBtn.contains(event.target)
+  ) {
+    scoreModal.classList.remove("game__score--open");
+  }
+});

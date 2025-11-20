@@ -67,8 +67,6 @@ main {
   justify-content: space-between;
 }
 
-
-
 .game__inner {
   border: 3px solid #ccc
 }
@@ -178,15 +176,6 @@ main {
 }
 
 
-
-
-
-
-
-
-
-
-
 .footer {
   display: flex;
   justify-content: center;
@@ -219,4 +208,104 @@ main {
 .footer-inner__school-img {
   width: 45px;
   height: 45px;
+}
+
+/* score for small screen */
+.game__score-toggle {
+  display: none;
+  margin: 10px 0;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+.game__score-toggle:hover {
+  background-color: #45a049;
+}
+.game__score-close {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .game__container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .game__score-toggle {
+    display: inline-block;
+  }
+  .game__score {
+    position: fixed;
+    width: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 3px solid #ccc;
+    display: none;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  .game__score--open {
+    display: block;
+  }
+  .game__score-close {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 35px;
+    line-height: 1;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+  }
+  .game__score-close:hover {
+    color: #000;
+  }
+  .game__menu {
+    align-self: flex-start;
+  }
+  .game__option {
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 700px) {
+  main {
+    align-items: flex-start;
+    padding-top: 50px;
+  }
+  .footer-inner {
+    width: auto;
+    padding: 8px 12px;
+  }
+  .footer-inner__github-link {
+    padding-right: 20px;
+  }
+  .footer-inner p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 500px) {
+  .game__inner-box {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+}
+@media (max-width: 360px) {
+  .game__inner-box {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }  
 }
